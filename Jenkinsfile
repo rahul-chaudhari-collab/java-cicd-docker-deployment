@@ -6,7 +6,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                    url: 'git@github.com:rahul-chaudhari-collab/java-cicd-docker-deployment.git'
+                    url: 'https://github.com/rahul-chaudhari-collab/java-cicd-docker-deployment.git'
             }
         }
 
