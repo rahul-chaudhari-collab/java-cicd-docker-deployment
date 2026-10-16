@@ -30,4 +30,4 @@ The application is packaged as a WAR file using Maven and deployed on an Apache 
 
 The Java web application has been built successfully using Maven and deployed inside a Docker container running Apache Tomcat. The application has been accessed and verified through a web browser.
 
-## PlanneD
+## Planned
