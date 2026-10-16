@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -19,7 +20,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
-                        mvn sonar:sonar \
+                        mvn org.sonarsource.scanner.maven:sonar-maven-plugin:5.3.0.6276:sonar \
                           -Dsonar.projectKey=java-cicd-docker-deployment \
                           -Dsonar.projectName=java-cicd-docker-deployment
                     '''
@@ -46,7 +47,9 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 sh 'docker ps'
+                sh 'curl -f http://localhost:8081/'
             }
         }
     }
 }
+
