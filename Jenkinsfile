@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -13,6 +12,18 @@ pipeline {
         stage('Build with Maven') {
             steps {
                 sh 'mvn clean package'
+            }
+        }
+
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    sh '''
+                        mvn sonar:sonar \
+                          -Dsonar.projectKey=java-cicd-docker-deployment \
+                          -Dsonar.projectName=java-cicd-docker-deployment
+                    '''
+                }
             }
         }
 
@@ -39,4 +50,3 @@ pipeline {
         }
     }
 }
-
